@@ -357,7 +357,7 @@ async def parse_query(text):
 # ══ BUILD KEYBOARD ══
 async def build_keyboard(parsed):
     q      = quote(parsed['query'], safe='')
-    q_dash = quote(parsed['query'].replace(' ', '-'), safe='')
+    q_dash = parsed['query'].strip().lower().replace(' ', '-')
     pmax   = parsed['price_max']
     rows, row = [], []
     for p in parsed['platforms']:
