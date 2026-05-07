@@ -451,9 +451,9 @@ async def main():
     await app.start()
 
     await app.updater.start_polling(
-        allowed_updates=Update.ALL_TYPES,
-        drop_pending_updates=True
-    )
+    allowed_updates=Update.ALL_TYPES,
+    drop_pending_updates=True
+)
 
     logger.info("🤖 Bot LIVE")
 
