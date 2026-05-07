@@ -122,6 +122,8 @@ ALL_KEYWORDS = [
 
 # =========================
 # EARNKARO API CONVERTER
+# FIX: regex was r'https?://\\S+' (double backslash = literal \S, matches nothing)
+#      corrected to r'https?://\S+' (single backslash = proper \S word boundary)
 # =========================
 
 async def ek(base_url):
@@ -147,7 +149,7 @@ async def ek(base_url):
                 "https://ekaro-api.affiliaters.in/api/converter/public",
                 json=payload,
                 headers=headers,
-                timeout=15
+                timeout=aiohttp.ClientTimeout(total=15)
             ) as response:
 
                 data = await response.json()
@@ -158,7 +160,9 @@ async def ek(base_url):
 
                     converted = data.get("data", "")
 
-                    urls = re.findall(r'https?://\\S+', converted)
+                    # ✅ FIXED: was r'https?://\\S+' — double backslash made \S literal,
+                    #    so findall never matched any URL and always fell back to base_url
+                    urls = re.findall(r'https?://\S+', converted)
 
                     if urls:
                         return urls[0]
@@ -218,7 +222,7 @@ def parse_price(t):
     price_max = None
 
     m = re.search(
-        r'(?:under|below|less than|upto|up to)\\s*₹?\\s*(\\d+)',
+        r'(?:under|below|less than|upto|up to)\s*₹?\s*(\d+)',
         t
     )
 
@@ -457,4 +461,3 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
-
