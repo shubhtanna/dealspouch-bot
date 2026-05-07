@@ -241,9 +241,11 @@ async def platform_link(platform, q, q_dash, price_max=None, parsed=None):
         return await ek(url)
 
     elif platform == 'shopsy':
-        url = f"https://www.shopsy.in/{q_dash}/pr?sort=price_asc"
         if price_max:
-            url += f"&p%5B%5D=facets.price_range.from%3DMin&p%5B%5D=facets.price_range.to%3D{price_max}"
+            search_term = quote(f"{parsed['query']} under {price_max}", safe='')
+        else:
+            search_term = quote(parsed['query'], safe='')
+        url = f"https://www.shopsy.in/search?q={search_term}"
         return await ek(url)
 
     elif platform == 'ajio':
