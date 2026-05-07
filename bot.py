@@ -344,13 +344,24 @@ async def build_keyboard(parsed):
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(
-        "👋 Welcome to ShopEasy Bot\n\n"
-        "Send any product name.\n\n"
-        "Example:\n"
-        "• hoodie under 500\n"
-        "• power bank\n"
-        "• padded bra\n"
-        "• nike shoes"
+        "🛍 Welcome to Dealspouch Bot 🤖\n\n"
+"Find products from all top shopping apps instantly 🚀\n\n"
+"✅ Flipkart\n"
+"✅ Amazon\n"
+"✅ Myntra\n"
+"✅ Ajio\n"
+"✅ Shopsy\n\n"
+"Example:\n"
+"• hoodie under 500\n"
+"• power bank 20000mah\n"
+"• nike shoes\n"
+"• saree under 999\n"
+"• wireless earbuds\n\n"
+"🔥 Smart Search\n"
+"🔥 Budget Filters\n"
+"🔥 Fast Shopping Links\n\n"
+"⌨️ Type any product name and get instant shopping links 👇"
+
     )
 
 # =========================
