@@ -371,7 +371,7 @@ async def build_keyboard(parsed):
 
 # ══ WELCOME TEXT ══
 WELCOME_TEXT = (
-    "👋 *Welcome to ShopEasy Bot!* 🛍\n\n"
+    "👋 *Welcome to Dealspouch Product Bot!* 🛍\n\n"
     "Find the best deals from top Indian platforms instantly!\n\n"
     "━━━━━━━━━━━━━━━━━\n"
     "*🛒 What I can find:*\n"
