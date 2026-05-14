@@ -534,6 +534,7 @@ async def main():
     app.add_handler(CommandHandler('stats',      stats_cmd))
     app.add_handler(CommandHandler('broadcast',  broadcast))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, search_product))
+    await app.bot.delete_webhook(drop_pending_updates=True)
     await app.initialize()
     await app.start()
     await app.updater.start_polling(allowed_updates=Update.ALL_TYPES, drop_pending_updates=True)
